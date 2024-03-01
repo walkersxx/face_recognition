@@ -1,4 +1,4 @@
-FROM python:3.4-slim
+FROM python:3.8-slim
 
 RUN apt-get -y update && \
     apt-get install -y --fix-missing \
@@ -10,7 +10,7 @@ RUN apt-get -y update && \
     curl \
     graphicsmagick \
     libgraphicsmagick1-dev \
-    libatlas-dev \
+    libatlas-base-dev \
     libavcodec-dev \
     libavformat-dev \
     libboost-all-dev \

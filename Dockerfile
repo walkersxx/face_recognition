@@ -17,8 +17,8 @@ RUN apt-get -y update && \
     libgtk2.0-dev \
     libjpeg-dev \
     liblapack-dev \
-    libswscale-dev \
-    pkg-config \
+    libswscale-dev
+RUN apt-get install -y --fix-missing pkg-config \
     python3-dev \
     python3-numpy \
     software-properties-common \

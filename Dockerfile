@@ -32,9 +32,8 @@ RUN apt-get install -y --fix-missing pkg-config \
 # Install DLIB
 RUN mkdir -p /root/dlib
 RUN git clone -b 'v19.24' --single-branch https://github.com/davisking/dlib.git /root/dlib/
-RUN cd  /root/dlib/
-#RUN python3 setup.py install --yes USE_AVX_INSTRUCTIONS
-#RUN python3 setup.py install
+RUN cd /root/dlib/ && \
+    python3 setup.py install
 
 
 # Install Flask

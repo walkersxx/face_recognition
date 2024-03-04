@@ -1,24 +1,27 @@
-FROM python:3.4-slim
+FROM python:3.8-slim
 
-RUN apt-get -y update && \
-    apt-get install -y --fix-missing \
+RUN apt-get update && \
+apt-get upgrade -y
+
+RUN apt-get install -y --fix-missing \
     build-essential \
     cmake \
     gfortran \
     git \
     wget \
     curl \
-    graphicsmagick \
+    graphicsmagick
+RUN apt-get install -y --fix-missing \    
     libgraphicsmagick1-dev \
-    libatlas-dev \
+    libatlas-base-dev \
     libavcodec-dev \
     libavformat-dev \
     libboost-all-dev \
     libgtk2.0-dev \
     libjpeg-dev \
     liblapack-dev \
-    libswscale-dev \
-    pkg-config \
+    libswscale-dev
+RUN apt-get install -y --fix-missing pkg-config \
     python3-dev \
     python3-numpy \
     software-properties-common \
@@ -27,11 +30,10 @@ RUN apt-get -y update && \
 
 
 # Install DLIB
-RUN cd ~ && \
-    mkdir -p dlib && \
-    git clone -b 'v19.7' --single-branch https://github.com/davisking/dlib.git dlib/ && \
-    cd  dlib/ && \
-    python3 setup.py install --yes USE_AVX_INSTRUCTIONS
+RUN mkdir -p /root/dlib
+RUN git clone -b 'v19.24' --single-branch https://github.com/davisking/dlib.git /root/dlib/
+RUN cd /root/dlib/ && \
+    python3 setup.py install
 
 
 # Install Flask
